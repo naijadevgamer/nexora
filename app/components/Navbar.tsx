@@ -27,6 +27,7 @@ export default function Navbar() {
           {links.map((link, idx) => (
             <Link
               href={link.href}
+              key={String(idx)}
               className={`${pathname === link.href ? "text-primary" : "text-gray-600"} text-lg font-semibold transition duration-100 hover:text-primary`}
             >
               {link.name}
