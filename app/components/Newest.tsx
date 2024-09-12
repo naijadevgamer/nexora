@@ -5,9 +5,10 @@ import Image from "next/image";
 import Link from "next/link";
 
 const getData = async () => {
-  const query = `*[_type == "product"][0...4] | (_createdAt desc) {
+  const query = `*[_type == "product"][0...4] | order(_createdAt desc) {
   _id, 
     price, 
+    name,
     "slug": slug.current,
     "categoryName": category->name,
     "imageUrl": images[0].asset->url
@@ -49,14 +50,12 @@ const Newest = async () => {
 
               <div className="mt-4 flex justify-between">
                 <div>
-                  <h3 className="text-sm text-gray-700">
+                  <h3 className="text-gray-700 font-medium">
                     <Link href={`/product/${product.slug}`}>
                       {product.name}
                     </Link>
                   </h3>
-                  <p className="mt-1 text-sm text-gray-500">
-                    {product.categoryName}
-                  </p>
+                  <p className="mt-1 text-gray-500">{product.categoryName}</p>
                 </div>
                 <p className="text-sm font-medium text-gray-900">
                   ${product.price}
