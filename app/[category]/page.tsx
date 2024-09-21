@@ -21,8 +21,8 @@ const Category = async ({ params }: { params: { category: string } }) => {
     <div className="bg-white">
       <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
         <div className="flex justify-between gap-x-3 items-center">
-          <h2 className="text-xl md:text-3xl font-bold text-gray-900">
-            Our {params.category} products
+          <h2 className="text-xl md:text-2xl font-bold text-gray-900">
+            Our products for {params.category}
           </h2>
         </div>
 
