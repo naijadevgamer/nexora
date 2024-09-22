@@ -3,6 +3,7 @@ import { client } from "../../lib/sanity";
 import ImageGallery from "@/app/components/ImageGallery";
 import { Button } from "@/components/ui/button";
 import { Star, Truck } from "lucide-react";
+import AddToBag from "@/app/components/AddToBag";
 
 const getData = async (slug: string) => {
   const query = `*[_type == "product" && slug.current == "${slug}"][0]{
@@ -21,7 +22,6 @@ const getData = async (slug: string) => {
 
 const ProductPage = async ({ params }: { params: { slug: string } }) => {
   const data: fullProduct = await getData(params.slug);
-  console.log(data);
   return (
     <div className="bg-white">
       <div className="mx-auto max-w-screen-xl px-4 pb-10 md:px-8">
@@ -68,7 +68,14 @@ const ProductPage = async ({ params }: { params: { slug: string } }) => {
             </div>
 
             <div className="flex gap-2.5">
-              <Button>Add to bag</Button>
+              <AddToBag
+                currency={"USD"}
+                name={data.name}
+                price_id={data.price_id}
+                price={data.price}
+                description={data.description}
+                image={data.images[0]}
+              />
               <Button>Checkout now</Button>
             </div>
 
