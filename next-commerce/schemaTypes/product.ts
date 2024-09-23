@@ -10,17 +10,17 @@ export default defineType({
       type: 'string',
       title: 'Name of Product',
     }),
-    {
+    defineField({
       name: 'images',
       type: 'array',
       title: 'Product Images',
       of: [{type: 'image'}],
-    },
-    {
+    }),
+    defineField({
       name: 'description',
       type: 'text',
       title: 'Description of product',
-    },
+    }),
     defineField({
       name: 'slug',
       type: 'slug',
@@ -29,11 +29,16 @@ export default defineType({
         source: 'name',
       },
     }),
-    {
+    defineField({
       name: 'price',
       type: 'number',
       title: 'Price',
-    },
+    }),
+    defineField({
+      name: 'price_id',
+      type: 'string',
+      title: 'Stripe Price ID',
+    }),
     defineField({
       name: 'category',
       title: 'Product of category',
