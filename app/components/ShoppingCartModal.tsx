@@ -6,8 +6,10 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
 import { useShoppingCart } from "use-shopping-cart";
+import { Button } from "@/components/ui/button";
 
 const ShoppingCartModal = () => {
   const {
@@ -16,18 +18,19 @@ const ShoppingCartModal = () => {
     handleCartClick,
     cartDetails,
     removeItem,
+    incrementItem,
+    decrementItem,
+    totalPrice,
   } = useShoppingCart();
 
-  console.log(cartDetails);
-
   return (
-    <Sheet open={shouldDisplayCart} onOpenChange={handleCartClick}>
-      <SheetContent>
+    <Sheet open={shouldDisplayCart} onOpenChange={() => handleCartClick()}>
+      <SheetContent className="w-full max-w-lg sm:max-w-lg">
         <SheetHeader>
           <SheetTitle>Shopping Cart</SheetTitle>
         </SheetHeader>
 
-        <div className="h-full flex flex-col justify-between">
+        <div className="flex h-full flex-col justify-between">
           <div className="mt-8 flex-1 overflow-y-auto">
             <ul className="-my-6 divide-y divide-gray-200">
               {cartCount === 0 ? (
@@ -50,14 +53,27 @@ const ShoppingCartModal = () => {
                           <h3>{cartDetail.name}</h3>
                           <p className="ml-4">${cartDetail.price}</p>
                         </div>
-                        <p className="mt-1 text-sm text-gray-500 line-clamp-2">
+                        <p className="mt-1 line-clamp-2 text-sm text-gray-500">
                           {cartDetail.description}
                         </p>
                       </div>
 
                       <div className="flex flex-1 items-end justify-between text-sm">
-                        <p className="text-gray-500">
-                          QTY: {cartDetail.quantity}
+                        <p className="flex items-center text-gray-500">
+                          QTY:
+                          <button>
+                            <ChevronLeft
+                              className="hover:text-gray-600"
+                              onClick={() => decrementItem(cartDetail.id)}
+                            />
+                          </button>
+                          {cartDetail.quantity}
+                          <button>
+                            <ChevronRight
+                              className="hover:text-gray-600"
+                              onClick={() => incrementItem(cartDetail.id)}
+                            />
+                          </button>
                         </p>
 
                         <div className="flex">
@@ -75,6 +91,31 @@ const ShoppingCartModal = () => {
                 ))
               )}
             </ul>
+          </div>
+          <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
+            <div className="flex justify-between text-base font-medium text-gray-900">
+              <p>Subtotal:</p>
+              <p>${totalPrice}</p>
+            </div>
+            <p className="mt-0.5 text-sm text-gray-500">
+              Shipping and taxes are calculated at checkout.
+            </p>
+
+            <div className="mt-6">
+              <Button className="w-full">Checkout</Button>
+            </div>
+
+            <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
+              <p>
+                OR{" "}
+                <button
+                  onClick={() => handleCartClick()}
+                  className="font-medium text-primary hover:text-primary/80"
+                >
+                  Continue Shopping
+                </button>
+              </p>
+            </div>
           </div>
         </div>
       </SheetContent>
