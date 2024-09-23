@@ -24,7 +24,7 @@ const AddToBag = ({
     price_id,
   };
   return (
-    <Button
+    <Button 
       onClick={() => {
         addItem(product), handleCartClick();
       }}

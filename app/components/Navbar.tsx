@@ -39,7 +39,7 @@ export default function Navbar() {
 
         <div className="flex divide-x border-r border-l">
           <Button
-            onClick={handleCartClick}
+            onClick={() => handleCartClick()}
             variant={"outline"}
             className="flex flex-col rounded-none h-12 w-12 sm:h-20 sm:w-20 md:h-24 md:w-24"
           >
