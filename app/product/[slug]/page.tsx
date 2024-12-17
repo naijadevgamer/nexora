@@ -4,21 +4,24 @@ import ImageGallery from "@/app/components/ImageGallery";
 import { Button } from "@/components/ui/button";
 import { Star, Truck } from "lucide-react";
 import AddToBag from "@/app/components/AddToBag";
+import CheckoutNow from "@/app/components/CheckoutNow";
 
 const getData = async (slug: string) => {
   const query = `*[_type == "product" && slug.current == "${slug}"][0]{
   _id, 
     price,
+    price_id,
     name,
     description,
     images,
     "slug": slug.current,
-    "categoryName": category->name,
-    price_id
+    "categoryName": category->name  
 }`;
   const data = await client.fetch(query);
   return data;
 };
+
+export const dynamic = "force-dynamic";
 
 const ProductPage = async ({ params }: { params: { slug: string } }) => {
   const data: fullProduct = await getData(params.slug);
@@ -39,7 +42,7 @@ const ProductPage = async ({ params }: { params: { slug: string } }) => {
             </div>
 
             <div className="mb-6 flex items-center gap-3 md:mb-10">
-              <Button className="rounded-full gap-x-2">
+              <Button className="gap-x-2 rounded-full">
                 <span className="text-sm">4.2</span>
                 <Star className="h-5 w-5" />
               </Button>
@@ -63,7 +66,7 @@ const ProductPage = async ({ params }: { params: { slug: string } }) => {
             </div>
 
             <div className="mb-6 flex items-center gap-2 text-gray-500">
-              <Truck className="w-6 h-6" />
+              <Truck className="h-6 w-6" />
               <span className="text-sm">2-4 Day Shipping</span>
             </div>
 
@@ -76,10 +79,17 @@ const ProductPage = async ({ params }: { params: { slug: string } }) => {
                 description={data.description}
                 image={data.images[0]}
               />
-              <Button>Checkout now</Button>
+              <CheckoutNow
+                currency={"USD"}
+                name={data.name}
+                price_id={data.price_id}
+                price={data.price}
+                description={data.description}
+                image={data.images[0]}
+              />
             </div>
 
-            <p className="mt-12 text-base text-gray-500 tracking-wide">
+            <p className="mt-12 text-base tracking-wide text-gray-500">
               {data.description}
             </p>
           </div>
