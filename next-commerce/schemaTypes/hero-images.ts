@@ -6,12 +6,12 @@ export default defineType({
   title: 'Two Hero Images',
   fields: [
     defineField({
-      name: 'image1',
+      name: 'image_1',
       type: 'image',
       title: 'First Image',
     }),
     defineField({
-      name: 'image2',
+      name: 'image_2',
       type: 'image',
       title: 'Second Image',
     }),
