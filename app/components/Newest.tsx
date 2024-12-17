@@ -17,18 +17,20 @@ const getData = async () => {
   return data;
 };
 
+export const dynamic = "force-dynamic";
+
 const Newest = async () => {
   const data: simplifiedProduct[] = await getData();
   return (
     <div className="bg-white">
       <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
         <div className="flex items-center justify-between gap-x-3">
-          <h2 className="text-2xl font-bold tracking-tight text-gray-900">
+          <h2 className="text-lg font-bold tracking-tight text-gray-900 sm:text-2xl">
             Our Newest products
           </h2>
 
           <Link className="flex items-center gap-x-1 text-primary" href="/all">
-            See All{" "}
+            <span className="w-max">See All </span>
             <span>
               <ArrowRight className="w-5" />
             </span>
@@ -36,8 +38,8 @@ const Newest = async () => {
         </div>
 
         <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-          {data.map((product) => (
-            <ProductCard product={product} />
+          {data.map((product, idx) => (
+            <ProductCard product={product} key={idx} />
           ))}
         </div>
       </div>
