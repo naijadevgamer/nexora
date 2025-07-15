@@ -7,11 +7,11 @@ const isDev = process.env.NODE_ENV === "development";
 
 const successUrl = isDev
   ? "http://localhost:3000/stripe/success"
-  : "https://your-production-url.com/stripe/success";
+  : "https://https://nexora-vert.vercel.app//stripe/success";
 
 const cancelUrl = isDev
   ? "http://localhost:3000/stripe/error"
-  : "https://your-production-url.com/stripe/error";
+  : "https://https://nexora-vert.vercel.app//stripe/error";
 
 const CartProvider = ({ children }: { children: ReactNode }) => {
   return (

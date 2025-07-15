@@ -53,7 +53,7 @@ const AboutPage = () => {
   ];
 
   return (
-    <div className="overflow-hidden bg-white text-gray-900">
+    <div className="overflow-hidden">
       {/* Hero Section with Parallax Video */}
       <div className="relative min-h-[calc(100vh-10rem)] overflow-hidden py-10 text-white">
         <video
@@ -173,7 +173,7 @@ const AboutPage = () => {
               whileInView={{ opacity: 1 }}
               transition={{ delay: 0.3, duration: 1 }}
               viewport={{ once: true }}
-              className="mb-6 text-xl text-gray-600"
+              className="mb-6 text-xl text-muted-foreground"
             >
               To revolutionize the fashion industry through sustainable
               innovation and cutting-edge technology.
@@ -183,7 +183,7 @@ const AboutPage = () => {
               whileInView={{ opacity: 1 }}
               transition={{ delay: 0.6, duration: 1 }}
               viewport={{ once: true }}
-              className="text-lg text-gray-500"
+              className="text-lg text-muted-foreground"
             >
               Founded in 2025, we've been at the forefront of the digital
               fashion revolution, merging augmented reality, smart fabrics, and
@@ -216,7 +216,7 @@ const AboutPage = () => {
       </section>
 
       {/* Features Section */}
-      <section className="bg-gradient-to-b from-white to-gray-50 px-4 py-20">
+      <section className="bg-gradient-to-b from-background to-muted px-4 py-20">
         <div className="mx-auto max-w-7xl">
           <motion.div
             initial={{ opacity: 0 }}
@@ -231,7 +231,7 @@ const AboutPage = () => {
                 Different
               </span>
             </h2>
-            <p className="mx-auto max-w-3xl text-xl text-gray-600">
+            <p className="mx-auto max-w-3xl text-xl text-muted-foreground">
               We're not just a fashion brand - we're a technology company
               redefining what clothing can do.
             </p>
@@ -246,15 +246,15 @@ const AboutPage = () => {
                 transition={{ delay: index * 0.1, duration: 0.6 }}
                 viewport={{ once: true }}
                 whileHover={{ y: -10 }}
-                className={`rounded-2xl border border-gray-200 bg-white p-8 shadow-lg transition-all hover:shadow-xl ${feature.bg} hover:bg-gradient-to-r`}
+                className={`rounded-2xl border border-border bg-card p-8 shadow-lg transition-all hover:shadow-xl ${feature.bg} hover:bg-gradient-to-r`}
               >
-                <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-lg bg-gradient-to-r from-purple-50 to-pink-50">
+                <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-lg bg-gradient-to-r from-primary/10 to-primary/20">
                   {feature.icon}
                 </div>
-                <h3 className="mb-3 text-2xl font-bold text-gray-900">
+                <h3 className="mb-3 text-2xl font-bold text-card-foreground/90">
                   {feature.title}
                 </h3>
-                <p className="text-gray-600">{feature.description}</p>
+                <p className="text-muted-foreground">{feature.description}</p>
               </motion.div>
             ))}
           </div>
@@ -276,7 +276,7 @@ const AboutPage = () => {
               Visionaries
             </span>
           </h2>
-          <p className="mx-auto max-w-3xl text-xl text-gray-600">
+          <p className="mx-auto max-w-3xl text-xl text-muted-foreground">
             Our team of futurists, designers, and engineers building tomorrow's
             fashion today.
           </p>
@@ -348,7 +348,7 @@ const AboutPage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-gradient-to-r from-purple-50 to-pink-50 px-4">
+      <section className="bg-gradient-to-r from-primary/10 to-secondary/20 px-4">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}

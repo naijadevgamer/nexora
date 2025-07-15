@@ -8,8 +8,7 @@ import { useShoppingCart } from "use-shopping-cart";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
-import { AuroraBackground } from "./AuroraBackground";
-// import { AuroraBackground } from "@/components/ui/aurora-background";
+import { ThemeToggle } from "./ThemeToggle"; // Add this import
 
 const links = [
   { name: "Home", href: "/" },
@@ -63,7 +62,10 @@ export default function Navbar() {
           ))}
         </nav>
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-1 sm:gap-4">
+          {/* Add ThemeToggle here */}
+          <ThemeToggle />
+
           <Button
             variant="ghost"
             size="icon"
@@ -107,7 +109,6 @@ export default function Navbar() {
             transition={{ duration: 0.3 }}
             className="overflow-hidden md:hidden"
           >
-            {/* <AuroraBackground> */}
             <div className="space-y-2 px-4 pb-4 pt-2">
               {links.map((link, idx) => (
                 <motion.div
@@ -128,8 +129,16 @@ export default function Navbar() {
                   </Link>
                 </motion.div>
               ))}
+              {/* Add Theme Toggle to Mobile Menu */}
+              {/* <motion.div
+                initial={{ x: -20, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ delay: links.length * 0.1 }}
+                className="px-3 py-2"
+              >
+                <ThemeToggle />
+              </motion.div> */}
             </div>
-            {/* </AuroraBackground> */}
           </motion.div>
         )}
       </AnimatePresence>

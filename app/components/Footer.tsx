@@ -136,7 +136,7 @@ export const Footer = () => {
                     {social.icon}
                   </Link>
                   <motion.span
-                    className="absolute -bottom-8 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-md bg-black px-2 py-1 text-xs text-white opacity-0 group-hover:opacity-100"
+                    className="absolute -bottom-8 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-md bg-primary px-2 py-1 text-xs text-white opacity-0 group-hover:opacity-100"
                     initial={{ y: 10 }}
                   >
                     {social.name}
@@ -164,7 +164,7 @@ export const Footer = () => {
               className="space-y-4"
             >
               <motion.h4
-                className="text-sm font-semibold uppercase tracking-wider text-muted-foreground"
+                className="text-sm font-semibold uppercase tracking-wider text-foreground"
                 whileHover={{ x: 5 }}
               >
                 {column.title}
@@ -178,7 +178,7 @@ export const Footer = () => {
                   >
                     <Link
                       href={link.href}
-                      className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                      className="text-sm text-muted-foreground transition-colors hover:text-primary"
                     >
                       {link.name}
                     </Link>

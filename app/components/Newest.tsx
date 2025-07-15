@@ -42,7 +42,7 @@ const Newest = async () => {
             </p>
           </div>
           <Link
-            href="/all"
+            href="/shop"
             className="group inline-flex items-center gap-1 text-sm font-medium text-primary"
           >
             View all

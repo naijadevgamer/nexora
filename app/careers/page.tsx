@@ -80,11 +80,11 @@ const CareersPage = () => {
   ];
 
   return (
-    <div className="overflow-hidden bg-white text-gray-900">
+    <div className="overflow-hidden">
       {/* Hero Section */}
       <div className="relative min-h-[calc(100vh-10rem)] overflow-hidden py-10">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2040&q=80')] bg-cover bg-center" />
-        <div className="absolute left-0 top-0 size-full bg-gradient-to-b from-black/30 via-black/50 to-black/70"></div>
+        <div className="absolute left-0 top-0 size-full bg-gradient-to-b from-black/40 via-black/60 to-black/80"></div>
 
         <motion.div
           initial={{ opacity: 0 }}
@@ -164,7 +164,7 @@ const CareersPage = () => {
               whileInView={{ opacity: 1 }}
               transition={{ delay: 0.3, duration: 1 }}
               viewport={{ once: true }}
-              className="mb-6 text-xl text-gray-600"
+              className="mb-6 text-xl text-muted-foreground"
             >
               We foster creativity, collaboration, and bold thinking. Our flat
               structure empowers everyone to lead.
@@ -174,7 +174,7 @@ const CareersPage = () => {
               whileInView={{ opacity: 1 }}
               transition={{ delay: 0.6, duration: 1 }}
               viewport={{ once: true }}
-              className="text-lg text-gray-500"
+              className="text-lg text-muted-foreground/70"
             >
               Join a team that values your unique perspective and gives you the
               tools to turn visionary ideas into reality.
@@ -206,7 +206,7 @@ const CareersPage = () => {
       </section>
 
       {/* Benefits Section */}
-      <section className="bg-gradient-to-b from-white to-gray-50 px-4 py-12 md:py-20">
+      <section className="bg-gradient-to-b from-background to-muted/50 px-4 py-12 md:py-20">
         <div className="container mx-auto">
           <motion.div
             initial={{ opacity: 0 }}
@@ -221,7 +221,7 @@ const CareersPage = () => {
                 Join Us
               </span>
             </h2>
-            <p className="mx-auto max-w-3xl text-xl text-gray-600">
+            <p className="mx-auto max-w-3xl text-xl text-muted-foreground">
               We invest in our team's growth, wellbeing, and success.
             </p>
           </motion.div>
@@ -235,15 +235,15 @@ const CareersPage = () => {
                 transition={{ delay: index * 0.1, duration: 0.6 }}
                 viewport={{ once: true }}
                 whileHover={{ y: -10 }}
-                className={`rounded-2xl border border-gray-200 bg-white p-8 shadow-lg transition-all hover:shadow-xl ${benefit.bg} hover:bg-gradient-to-r`}
+                className={`rounded-2xl border border-border bg-card p-8 shadow-lg transition-all hover:shadow-xl ${benefit.bg} hover:bg-gradient-to-r`}
               >
-                <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-r from-purple-50 to-pink-50">
+                <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-r from-primary/10 to-primary/20">
                   {benefit.icon}
                 </div>
-                <h3 className="mb-3 text-xl font-bold text-gray-900">
+                <h3 className="mb-3 text-xl font-bold text-card-foreground/90">
                   {benefit.title}
                 </h3>
-                <p className="text-gray-600">{benefit.description}</p>
+                <p className="text-muted-foreground">{benefit.description}</p>
               </motion.div>
             ))}
           </div>
@@ -265,7 +265,7 @@ const CareersPage = () => {
               Positions
             </span>
           </h2>
-          <p className="mx-auto max-w-3xl text-xl text-gray-600">
+          <p className="mx-auto max-w-3xl text-xl text-muted-foreground">
             Help us build the future of fashion technology.
           </p>
         </motion.div>
@@ -284,14 +284,14 @@ const CareersPage = () => {
               <Link
                 href={position.link}
                 target="_blank"
-                className="block rounded-xl border border-gray-200 bg-white p-6 shadow-lg transition-all hover:border-purple-500 group-hover:shadow-xl"
+                className="block rounded-xl border border-border bg-card p-6 shadow-lg transition-all hover:border-purple-500 group-hover:shadow-xl"
               >
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between">
                   <div>
-                    <h3 className="mb-1 text-xl font-bold text-gray-900 group-hover:text-purple-600">
+                    <h3 className="mb-1 text-xl font-bold text-card-foreground/90 group-hover:text-purple-600">
                       {position.title}
                     </h3>
-                    <div className="flex flex-wrap gap-4 text-sm text-gray-500">
+                    <div className="flex flex-wrap gap-4 text-sm text-muted-foreground/70">
                       <span className="flex items-center">
                         <svg
                           className="mr-1 h-4 w-4"
@@ -379,7 +379,7 @@ const CareersPage = () => {
           viewport={{ once: true }}
           className="mt-16 text-center"
         >
-          <p className="mb-6 text-lg text-gray-600">
+          <p className="mb-6 text-lg text-muted-foreground">
             Don't see your dream role? We're always looking for exceptional
             talent.
           </p>
@@ -406,7 +406,7 @@ const CareersPage = () => {
       </section>
 
       {/* CTA */}
-      <section className="bg-gradient-to-r from-purple-50 to-pink-50 px-4 py-32">
+      <section className="bg-gradient-to-r from-primary/10 to-secondary/20 px-4 py-32">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -420,7 +420,7 @@ const CareersPage = () => {
               Innovate?
             </span>
           </h2>
-          <p className="mx-auto mb-10 max-w-2xl text-xl text-gray-600">
+          <p className="mx-auto mb-10 max-w-2xl text-xl text-muted-foreground">
             Join a team that's changing the world through fashion technology.
           </p>
           <div className="flex flex-col justify-center gap-4 sm:flex-row">

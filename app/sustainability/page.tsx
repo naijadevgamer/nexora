@@ -1,5 +1,7 @@
 "use client";
 
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { AvatarImage } from "@radix-ui/react-avatar";
 import { motion } from "framer-motion";
 import { Leaf, Recycle, Cloud, Droplet } from "lucide-react";
 import Image from "next/image";
@@ -51,7 +53,7 @@ const SustainabilityPage = () => {
   ];
 
   return (
-    <div className="overflow-hidden bg-white text-gray-900">
+    <div className="overflow-hidden">
       {/* Hero Section */}
       <div className="relative min-h-[calc(100vh-10rem)] overflow-hidden py-10 text-white">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2400&q=80')] bg-cover bg-center" />
@@ -160,7 +162,7 @@ const SustainabilityPage = () => {
                 <div className="mb-4 bg-gradient-to-r from-green-500 to-teal-600 bg-clip-text text-5xl font-bold text-transparent md:text-6xl">
                   {stat.number}
                 </div>
-                <p className="text-xl text-gray-600">{stat.label}</p>
+                <p className="text-xl text-muted-foreground">{stat.label}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -182,7 +184,7 @@ const SustainabilityPage = () => {
               Initiatives
             </span>
           </h2>
-          <p className="mx-auto max-w-3xl text-xl text-gray-600">
+          <p className="mx-auto max-w-3xl text-xl text-muted-foreground">
             We're pushing boundaries to create fashion that gives back to the
             planet.
           </p>
@@ -197,22 +199,20 @@ const SustainabilityPage = () => {
               transition={{ delay: index * 0.1, duration: 0.6 }}
               viewport={{ once: true }}
               whileHover={{ scale: 1.05 }}
-              className={`rounded-2xl border border-gray-200 bg-white p-8 shadow-lg transition-all hover:shadow-xl ${initiative.bg} hover:bg-gradient-to-r`}
+              className={`rounded-2xl border border-border bg-card p-8 shadow-lg transition-all hover:shadow-xl ${initiative.bg} hover:bg-gradient-to-r`}
             >
-              <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-lg bg-gradient-to-r from-green-50 to-teal-50">
+              <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-lg bg-gradient-to-r from-green-50 to-teal-50 dark:from-green-200 dark:to-teal-200">
                 {initiative.icon}
               </div>
-              <h3 className="mb-3 text-2xl font-bold text-gray-900">
-                {initiative.title}
-              </h3>
-              <p className="text-gray-600">{initiative.description}</p>
+              <h3 className="mb-3 text-2xl font-bold">{initiative.title}</h3>
+              <p className="text-muted-foreground">{initiative.description}</p>
             </motion.div>
           ))}
         </div>
       </section>
 
       {/* Materials Innovation */}
-      <section className="bg-gradient-to-b from-white to-gray-50 px-4 py-12 md:py-20">
+      <section className="bg-gradient-to-b from-primary/5 to-primary/10 px-4 py-12 md:py-20">
         <div className="container">
           <motion.div
             initial={{ opacity: 0 }}
@@ -247,7 +247,7 @@ const SustainabilityPage = () => {
               <h2 className="mb-8 text-4xl font-bold md:text-5xl">
                 Material Science Revolution
               </h2>
-              <p className="mb-6 text-xl text-gray-600">
+              <p className="mb-6 text-xl text-muted-foreground">
                 We've developed breakthrough fabrics made from algae, mushroom
                 mycelium, and recycled ocean plastics.
               </p>
@@ -281,7 +281,7 @@ const SustainabilityPage = () => {
       </section>
 
       {/* Partnerships */}
-      <section className="container px-4 py-12 md:py-20">
+      {/* <section className="container px-4 py-12 md:py-20">
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -295,7 +295,7 @@ const SustainabilityPage = () => {
               Partnerships
             </span>
           </h2>
-          <p className="mx-auto max-w-3xl text-xl text-gray-600">
+          <p className="mx-auto max-w-3xl text-xl text-muted-foreground">
             Collaborating with leading environmental organizations to maximize
             our impact.
           </p>
@@ -334,21 +334,18 @@ const SustainabilityPage = () => {
               className="flex h-32 items-center justify-center rounded-xl bg-white p-6 shadow-md hover:shadow-lg"
             >
               <Link href={partner.link} target="_blank">
-                <Image
-                  src={partner.logo}
-                  alt={partner.name}
-                  width={160}
-                  height={80}
-                  className="h-16 w-auto object-contain opacity-80 transition-all hover:scale-105 hover:opacity-100"
-                />
+                <Avatar>
+                  <AvatarImage src={partner.logo} />
+                  <AvatarFallback>{partner.name[0]}</AvatarFallback>
+                </Avatar>
               </Link>
             </motion.div>
           ))}
         </div>
-      </section>
+      </section> */}
 
       {/* CTA */}
-      <section className="bg-gradient-to-r from-green-50 to-teal-50 px-4 py-32">
+      <section className="bg-gradient-to-rb from-green-50 to-teal-50 px-4 py-32 dark:from-primary/10 dark:to-secondary/20">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -362,7 +359,7 @@ const SustainabilityPage = () => {
               Mission
             </span>
           </h2>
-          <p className="mx-auto mb-10 max-w-2xl text-xl text-gray-600">
+          <p className="mx-auto mb-10 max-w-2xl text-xl text-muted-foreground">
             Every purchase helps fund environmental restoration projects
             worldwide.
           </p>

@@ -86,7 +86,7 @@ const PressPage = () => {
   ];
 
   return (
-    <div className="overflow-hidden bg-white text-gray-900">
+    <div className="overflow-hidden">
       {/* Hero Section */}
       <div className="relative min-h-[calc(100vh-10rem)] overflow-hidden py-10">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2040&q=80')] bg-cover bg-center" />
@@ -133,7 +133,7 @@ const PressPage = () => {
               Coverage
             </span>
           </h2>
-          <p className="mx-auto max-w-3xl text-xl text-gray-600">
+          <p className="mx-auto max-w-3xl text-xl text-muted-foreground">
             Highlights from leading publications worldwide.
           </p>
         </motion.div>
@@ -152,24 +152,24 @@ const PressPage = () => {
               <Link
                 href={item.link}
                 target="_blank"
-                className={`block h-full rounded-xl border border-gray-200 bg-white p-8 shadow-lg transition-all hover:border-purple-500 group-hover:shadow-xl ${item.bg} hover:bg-gradient-to-r`}
+                className={`block h-full rounded-xl border border-border bg-card p-8 shadow-lg transition-all hover:border-purple-500 group-hover:shadow-xl ${item.bg} hover:bg-gradient-to-r`}
               >
                 <div className="mb-4 flex items-center gap-3">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-r from-purple-50 to-pink-50">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-r from-primary/10 to-primary/20">
                     {item.icon}
                   </div>
                   <div>
-                    <span className="text-sm font-medium text-gray-900">
+                    <span className="text-sm font-medium text-foreground/90">
                       {item.type}
                     </span>
-                    <div className="flex gap-2 text-sm text-gray-500">
+                    <div className="flex gap-2 text-sm text-muted-foreground/90">
                       <span>{item.source}</span>
                       <span>•</span>
                       <span>{item.date}</span>
                     </div>
                   </div>
                 </div>
-                <h3 className="mb-4 text-xl font-bold text-gray-900 transition-colors group-hover:text-purple-600">
+                <h3 className="mb-4 text-xl font-bold text-foreground/90 transition-colors group-hover:text-purple-600">
                   {item.title}
                 </h3>
                 <span className="inline-flex items-center text-sm font-medium text-purple-600">
@@ -195,7 +195,7 @@ const PressPage = () => {
       </section>
 
       {/* News Section */}
-      <section className="bg-gradient-to-b from-white to-gray-50 px-4 py-12 md:py-20">
+      <section className="bg-gradient-to-b from-background to-muted px-4 py-12 md:py-20">
         <div className="container">
           <motion.div
             initial={{ opacity: 0 }}
@@ -211,7 +211,7 @@ const PressPage = () => {
                   News
                 </span>
               </h2>
-              <p className="mb-6 text-xl text-gray-600">
+              <p className="mb-6 text-xl text-muted-foreground">
                 Stay updated with our company announcements and milestones.
               </p>
             </div>
@@ -229,10 +229,10 @@ const PressPage = () => {
                   <Link
                     href={item.link}
                     target="_blank"
-                    className="block border-b border-gray-200 pb-6 transition-colors group-hover:border-purple-600"
+                    className="block border-b border-border pb-6 transition-colors group-hover:border-purple-600"
                   >
                     <div className="flex items-start justify-between gap-4">
-                      <h3 className="flex-1 text-lg font-medium text-gray-900 transition-colors group-hover:text-purple-600">
+                      <h3 className="flex-1 text-lg font-medium text-foreground/90 transition-colors group-hover:text-purple-600">
                         {item.title}
                       </h3>
                       <svg
@@ -249,7 +249,7 @@ const PressPage = () => {
                         />
                       </svg>
                     </div>
-                    <span className="mt-2 inline-block text-sm text-gray-500">
+                    <span className="mt-2 inline-block text-sm text-muted-foreground/90">
                       {item.date}
                     </span>
                   </Link>
@@ -275,7 +275,7 @@ const PressPage = () => {
               Assets
             </span>
           </h2>
-          <p className="mx-auto max-w-3xl text-xl text-gray-600">
+          <p className="mx-auto max-w-3xl text-xl text-muted-foreground">
             Download high-resolution images, logos, and brand materials.
           </p>
         </motion.div>
@@ -342,7 +342,7 @@ const PressPage = () => {
       </section>
 
       {/* Press Contact */}
-      <section className="bg-gradient-to-r from-purple-50 to-pink-50 px-4 py-12 md:py-20">
+      <section className="bg-gradient-to-r from-primary/10 to-secondary/20 px-4 py-12 md:py-20">
         <div className="container">
           <div className="mx-auto max-w-4xl">
             <motion.div
@@ -350,36 +350,36 @@ const PressPage = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className="rounded-2xl border border-gray-200 bg-white p-8 shadow-lg md:p-12"
+              className="rounded-2xl border border-border bg-card p-8 shadow-lg md:p-12"
             >
-              <h2 className="mb-6 text-3xl font-bold text-gray-900 md:text-4xl">
+              <h2 className="mb-6 text-3xl font-bold text-foreground/90 md:text-4xl">
                 Press Inquiries
               </h2>
-              <p className="mb-8 text-xl text-gray-600">
+              <p className="mb-8 text-xl text-muted-foreground">
                 For media requests, interviews, or additional information,
                 please contact our communications team.
               </p>
 
               <div className="grid gap-8 md:grid-cols-2">
                 <div>
-                  <h3 className="mb-4 text-lg font-bold text-gray-900">
+                  <h3 className="mb-4 text-lg font-bold text-foreground/90">
                     North America
                   </h3>
                   <p className="mb-2 text-gray-700">Sarah Johnson</p>
                   <p className="mb-4 text-purple-600">
                     sarah@innovatefashion.com
                   </p>
-                  <p className="text-gray-500">+1 (555) 123-4567</p>
+                  <p className="text-muted-foreground/90">+1 (555) 123-4567</p>
                 </div>
                 <div>
-                  <h3 className="mb-4 text-lg font-bold text-gray-900">
+                  <h3 className="mb-4 text-lg font-bold text-foreground/90">
                     Europe & International
                   </h3>
                   <p className="mb-2 text-gray-700">Marcus Chen</p>
                   <p className="mb-4 text-purple-600">
                     marcus@innovatefashion.com
                   </p>
-                  <p className="text-gray-500">+44 20 1234 5678</p>
+                  <p className="text-muted-foreground/90">+44 20 1234 5678</p>
                 </div>
               </div>
             </motion.div>

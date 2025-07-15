@@ -90,7 +90,7 @@ const ShoppingCartModal = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Link href="/all">
+                <Link href="/shop">
                   <Button onClick={() => handleCartClick()}>
                     Start Exploring
                   </Button>
