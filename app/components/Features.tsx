@@ -1,8 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Diamond, Zap, Smartphone, Truck } from "lucide-react";
+import { motion } from "framer-motion";
+import { Diamond, Smartphone, Truck, Zap } from "lucide-react";
 
 const features = [
   {

@@ -1,14 +1,13 @@
-// components/ProductCard.tsx
 "use client";
 
-import { simplifiedProduct } from "../interface";
+import { Button } from "@/components/ui/button";
+import { Tilt } from "@/components/ui/tilt";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
-import { Tilt } from "@/components/ui/tilt";
-import { Button } from "@/components/ui/button";
-import { useShoppingCart } from "use-shopping-cart";
 import { toast } from "sonner";
+import { useShoppingCart } from "use-shopping-cart";
+import { simplifiedProduct } from "../interface";
 
 const ProductCard = ({ product }: { product: simplifiedProduct }) => {
   const { addItem, handleCartClick } = useShoppingCart();

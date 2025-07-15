@@ -1,7 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { motion } from "framer-motion";
 import { Quote } from "lucide-react";
 
 const testimonials = [

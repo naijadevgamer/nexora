@@ -1,4 +1,3 @@
-// components/ImageGallery.tsx
 "use client";
 
 import Image from "next/image";

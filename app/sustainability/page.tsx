@@ -7,7 +7,6 @@ import Link from "next/link";
 import { useEffect } from "react";
 
 const SustainabilityPage = () => {
-  // Add smooth scroll functionality
   useEffect(() => {
     document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
       anchor.addEventListener("click", function (this: HTMLAnchorElement, e) {

@@ -1,20 +1,19 @@
-// components/ShoppingCartModal.tsx
 "use client";
 
+import { Button } from "@/components/ui/button";
 import {
   Sheet,
   SheetContent,
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
+import { AnimatePresence, motion } from "framer-motion";
 import { ChevronLeft, ChevronRight, Ghost, X } from "lucide-react";
 import Image from "next/image";
-import { useShoppingCart } from "use-shopping-cart";
-import { Button } from "@/components/ui/button";
-import { motion, AnimatePresence } from "framer-motion";
-import { toast } from "sonner";
 import Link from "next/link";
 import { useState } from "react";
+import { toast } from "sonner";
+import { useShoppingCart } from "use-shopping-cart";
 
 const ShoppingCartModal = () => {
   const {

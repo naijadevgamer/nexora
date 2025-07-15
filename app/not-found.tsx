@@ -1,5 +1,5 @@
-// app/not-found.tsx
 "use client";
+
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { useTheme } from "next-themes";

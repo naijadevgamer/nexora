@@ -3,7 +3,6 @@ import { MotionDiv } from "../components/motion-div";
 import ProductCard from "../components/ProductCard";
 import { simplifiedProduct } from "../interface";
 import { client } from "../lib/sanity";
-// import { MotionDiv } from "@/components/motion-div";
 
 const getData = async () => {
   const query = `*[_type == "product"] | order(_createdAt desc) {

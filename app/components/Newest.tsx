@@ -1,11 +1,9 @@
-// components/Newest.tsx
 import { ArrowRight } from "lucide-react";
 import { simplifiedProduct } from "../interface";
 import { client } from "../lib/sanity";
 import Link from "next/link";
 import ProductCard from "./ProductCard";
 import { MotionDiv } from "./motion-div";
-// import { MotionDiv } from "./motion-div";
 
 const getData = async () => {
   const query = `*[_type == "product"][0...4] | order(_createdAt desc) {

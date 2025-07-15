@@ -1,4 +1,3 @@
-// app/stripe/error/page.tsx
 import { Button } from "@/components/ui/button";
 import { OctagonAlert, ArrowLeft } from "lucide-react";
 import Link from "next/link";

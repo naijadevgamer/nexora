@@ -1,4 +1,3 @@
-// components/Hero.tsx
 import { client, urlFor } from "../lib/sanity";
 import Link from "next/link";
 import Image from "next/image";
@@ -6,7 +5,6 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { MotionDiv } from "./motion-div";
 import ParticleBackground from "./ParticleBackground";
-// import { ParticleBackground } from "./ParticleBackground";
 
 const getData = async () => {
   const query = '*[_type == "heroImage"][0]';

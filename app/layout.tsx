@@ -1,16 +1,14 @@
-// app/layout.tsx
 import type { Metadata } from "next";
-import { GeistSans } from "geist/font/sans";
 import { Inter } from "next/font/google";
 
-import "./globals.css";
 import Navbar from "@/app/components/Navbar";
 import CartProvider from "./components/Providers";
 import ShoppingCartModal from "./components/ShoppingCartModal";
+import "./globals.css";
 // import { ThemeProvider } from "@/components/ThemeProvider";
 import { Toaster } from "@/components/ui/sonner";
-import { ThemeProvider } from "./components/ThemeProvider";
 import { Footer } from "./components/Footer";
+import { ThemeProvider } from "./components/ThemeProvider";
 // import Footer from "@/components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });

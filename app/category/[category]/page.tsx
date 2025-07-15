@@ -1,14 +1,7 @@
-// app/[category]/page.tsx
-import {
-  AuroraBackground,
-  DigitalRain,
-  ParticleNetwork,
-} from "@/app/components/ParticleBackground";
 import { MotionDiv } from "../../components/motion-div";
 import ProductCard from "../../components/ProductCard";
 import { simplifiedProduct } from "../../interface";
 import { client } from "../../lib/sanity";
-// import { MotionDiv } from "@/components/motion-div";
 
 const getData = async (category: string) => {
   const query = `*[_type == "product" && category->name == "${category}"]{

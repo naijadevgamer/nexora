@@ -1,4 +1,3 @@
-// app/page.tsx
 import { Features } from "./components/Features";
 import Hero from "./components/Hero";
 import Newest from "./components/Newest";

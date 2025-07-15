@@ -1,10 +1,6 @@
-// components/Particles.tsx
 "use client";
-import { useEffect, useRef } from "react";
-// components/backgrounds/ParticleNetwork.tsx
-import { motion, useMotionValue, useTransform } from "framer-motion";
-import { useState } from "react";
-// import { gsap } from "gsap";
+import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 
 const ParticleBackground = ({ className }: { className?: string }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);

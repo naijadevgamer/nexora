@@ -1,13 +1,10 @@
-// app/product/[slug]/page.tsx
-import { fullProduct } from "@/app/interface";
-import { client } from "../../lib/sanity";
-import ImageGallery from "@/app/components/ImageGallery";
-import { Button } from "@/components/ui/button";
-import { Star, Truck, ChevronRight, Zap } from "lucide-react";
 import AddToBag from "@/app/components/AddToBag";
 import CheckoutNow from "@/app/components/CheckoutNow";
-// import { MotionDiv } from "@/components/motion-div";
-import { MotionDiv } from "@/app/components/motion-div"; // Adjusted import path
+import ImageGallery from "@/app/components/ImageGallery";
+import { fullProduct } from "@/app/interface";
+import { ChevronRight, Star, Truck, Zap } from "lucide-react";
+import { client } from "../../lib/sanity";
+import { MotionDiv } from "@/app/components/motion-div";
 
 const getData = async (slug: string) => {
   const query = `*[_type == "product" && slug.current == "${slug}"][0]{

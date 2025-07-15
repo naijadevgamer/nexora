@@ -1,13 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Newspaper, Play, Mic, Award } from "lucide-react";
+import { Award, Mic, Newspaper, Play } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect } from "react";
 
 const PressPage = () => {
-  // Add smooth scroll functionality
   useEffect(() => {
     document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
       anchor.addEventListener("click", function (this: HTMLAnchorElement, e) {
