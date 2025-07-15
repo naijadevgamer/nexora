@@ -108,29 +108,29 @@ export default function Navbar() {
             transition={{ duration: 0.3 }}
             className="overflow-hidden md:hidden"
           >
-            <AuroraBackground>
-              <div className="space-y-2 px-4 pb-4 pt-2">
-                {links.map((link, idx) => (
-                  <motion.div
-                    key={idx}
-                    initial={{ x: -20, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    transition={{ delay: idx * 0.1 }}
+            {/* <AuroraBackground> */}
+            <div className="space-y-2 px-4 pb-4 pt-2">
+              {links.map((link, idx) => (
+                <motion.div
+                  key={idx}
+                  initial={{ x: -20, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ delay: idx * 0.1 }}
+                >
+                  <Link
+                    href={link.href}
+                    className={cn(
+                      "block cursor-pointer rounded-md px-3 py-2 text-base font-medium transition-colors hover:bg-accent",
+                      pathname === link.href ? "bg-accent" : "",
+                    )}
+                    onClick={() => setMobileMenuOpen(false)}
                   >
-                    <Link
-                      href={link.href}
-                      className={cn(
-                        "block rounded-md px-3 py-2 text-base font-medium transition-colors hover:bg-accent",
-                        pathname === link.href ? "bg-accent" : "",
-                      )}
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      {link.name}
-                    </Link>
-                  </motion.div>
-                ))}
-              </div>
-            </AuroraBackground>
+                    {link.name}
+                  </Link>
+                </motion.div>
+              ))}
+            </div>
+            {/* </AuroraBackground> */}
           </motion.div>
         )}
       </AnimatePresence>

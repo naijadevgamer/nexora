@@ -11,7 +11,6 @@ import ShoppingCartModal from "./components/ShoppingCartModal";
 import { Toaster } from "@/components/ui/sonner";
 import { ThemeProvider } from "./components/ThemeProvider";
 import { Footer } from "./components/Footer";
-import SmoothScroll from "./components/SmoothScroll";
 // import Footer from "@/components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -49,7 +48,6 @@ export default function RootLayout({
         className="bg-background antialiased"
         style={{ fontFamily: inter.style.fontFamily }}
       >
-        <SmoothScroll />
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
