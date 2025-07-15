@@ -1,26 +1,40 @@
 import { Button } from "@/components/ui/button";
-import { CheckCheck } from "lucide-react";
+import { CheckCheck, Zap } from "lucide-react";
 import Link from "next/link";
+import { MotionDiv } from "@/app/components/motion-div";
 
-export default function stripeSuccess() {
+export default function StripeSuccess() {
   return (
-    <div className="h-screen">
-      <div className="mt-32 md:max-w-[50vw] mx-auto">
-        <CheckCheck className="text-green-600 w-16 h-16 mx-auto my-6" />
-        <div className="text-center">
-          <h3 className="md:text-2xl text-base text-gray-900 font-semibold text-center">
-            Payment Done!
-          </h3>
-          <p className="text-gray-600 my-2">
-            Thank you for you pruchase We hope you enjoy it
-          </p>
-          <p>Have a great day!</p>
+    <div className="flex min-h-screen items-center justify-center bg-gradient-to-b from-background to-muted">
+      <MotionDiv
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5 }}
+        className="mx-auto w-full max-w-md rounded-2xl border border-border/50 bg-background/50 p-8 shadow-xl backdrop-blur-md"
+      >
+        <div className="flex flex-col items-center text-center">
+          <div className="relative mb-6">
+            <div className="absolute -inset-2 rounded-full bg-green-500/20 blur-md"></div>
+            <CheckCheck className="relative h-16 w-16 text-green-500" />
+          </div>
 
-          <Button asChild className="mt-5">
-            <Link href="/">GO back</Link>
+          <h1 className="text-3xl font-bold tracking-tight text-foreground">
+            Payment Successful!
+          </h1>
+          <p className="mt-4 text-muted-foreground">
+            Thank you for your purchase. Your order is being processed.
+          </p>
+
+          <div className="mt-6 flex items-center gap-2 rounded-full bg-primary/10 px-4 py-2 text-sm font-medium text-primary">
+            <Zap className="h-4 w-4" />
+            <span>Order confirmed</span>
+          </div>
+
+          <Button asChild className="mt-8 w-full">
+            <Link href="/">Continue Shopping</Link>
           </Button>
         </div>
-      </div>
+      </MotionDiv>
     </div>
   );
 }

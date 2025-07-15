@@ -1,11 +1,16 @@
+// app/page.tsx
+import { Features } from "./components/Features";
 import Hero from "./components/Hero";
 import Newest from "./components/Newest";
+import { Testimonials } from "./components/Testimonials";
 
 export default function Home() {
   return (
-    <div className="bg-white">
+    <>
       <Hero />
+      <Features />
       <Newest />
-    </div>
+      <Testimonials />
+    </>
   );
 }

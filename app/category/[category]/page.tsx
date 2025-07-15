@@ -1,12 +1,17 @@
-// app/all/page.tsx
-import { MotionDiv } from "../components/motion-div";
-import ProductCard from "../components/ProductCard";
-import { simplifiedProduct } from "../interface";
-import { client } from "../lib/sanity";
+// app/[category]/page.tsx
+import {
+  AuroraBackground,
+  DigitalRain,
+  ParticleNetwork,
+} from "@/app/components/ParticleBackground";
+import { MotionDiv } from "../../components/motion-div";
+import ProductCard from "../../components/ProductCard";
+import { simplifiedProduct } from "../../interface";
+import { client } from "../../lib/sanity";
 // import { MotionDiv } from "@/components/motion-div";
 
-const getData = async () => {
-  const query = `*[_type == "product"] | order(_createdAt desc) {
+const getData = async (category: string) => {
+  const query = `*[_type == "product" && category->name == "${category}"]{
     _id, 
     price,
     name,
@@ -20,12 +25,12 @@ const getData = async () => {
 
 export const dynamic = "force-dynamic";
 
-const AllProducts = async () => {
-  const data: simplifiedProduct[] = await getData();
+const Category = async ({ params }: { params: { category: string } }) => {
+  const data: simplifiedProduct[] = await getData(params.category);
 
   return (
-    <section className="py-8 sm:py-16">
-      <div className="container">
+    <section className="relative py-8 sm:py-16">
+      <div className="container relative z-10">
         <MotionDiv
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -34,10 +39,10 @@ const AllProducts = async () => {
           className="mb-12"
         >
           <h1 className="bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-4xl font-bold tracking-tight text-transparent sm:text-5xl">
-            Our Complete Collection
+            {params.category} Collection
           </h1>
           <p className="mt-4 text-lg text-muted-foreground">
-            Explore all our futuristic fashion pieces
+            Futuristic designs for the modern {params.category.toLowerCase()}
           </p>
         </MotionDiv>
 
@@ -48,7 +53,7 @@ const AllProducts = async () => {
                 key={product._id}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: idx * 0.05 }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
                 viewport={{ once: true }}
               >
                 <ProductCard product={product} />
@@ -58,7 +63,7 @@ const AllProducts = async () => {
         ) : (
           <div className="flex h-64 items-center justify-center rounded-lg border border-dashed border-border">
             <p className="text-muted-foreground">
-              No products available at this time
+              No products found in this category
             </p>
           </div>
         )}
@@ -67,4 +72,4 @@ const AllProducts = async () => {
   );
 };
 
-export default AllProducts;
+export default Category;

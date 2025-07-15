@@ -1,3 +1,4 @@
+// components/ShoppingCartModal.tsx
 "use client";
 
 import {
@@ -6,10 +7,14 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Ghost, X } from "lucide-react";
 import Image from "next/image";
 import { useShoppingCart } from "use-shopping-cart";
 import { Button } from "@/components/ui/button";
+import { motion, AnimatePresence } from "framer-motion";
+import { toast } from "sonner";
+import Link from "next/link";
+import { useState } from "react";
 
 const ShoppingCartModal = () => {
   const {
@@ -24,114 +29,181 @@ const ShoppingCartModal = () => {
     redirectToCheckout,
   } = useShoppingCart();
 
-  const handleCheckoutClick = async (e: any) => {
+  const [loading, setLoading] = useState(false);
+
+  const handleCheckoutClick = async (
+    e: React.MouseEvent<HTMLButtonElement>,
+  ) => {
     e.preventDefault();
+
+    setLoading(true);
+    const toastId = toast.loading("Redirecting to checkout...");
+
     try {
       const result = await redirectToCheckout();
-      if (result.error) {
-        console.log("result");
+
+      if (result?.error) {
+        toast.error("Checkout failed", { id: toastId });
+      } else {
+        toast.success("Checkout started", { id: toastId });
       }
     } catch (error) {
-      console.log(error);
+      toast.error("An error occurred during checkout", { id: toastId });
+      console.error(error);
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <Sheet open={shouldDisplayCart} onOpenChange={() => handleCartClick()}>
-      <SheetContent className="w-full max-w-lg sm:max-w-lg">
+    <Sheet open={shouldDisplayCart} onOpenChange={handleCartClick}>
+      <SheetContent className="w-full sm:max-w-lg">
         <SheetHeader>
-          <SheetTitle>Shopping Cart</SheetTitle>
+          <SheetTitle className="text-2xl font-bold tracking-tight">
+            Your Shopping Cart
+          </SheetTitle>
         </SheetHeader>
 
         <div className="flex h-full flex-col justify-between">
-          <div className="mt-8 flex-1 overflow-y-auto">
-            <ul className="-my-6 divide-y divide-gray-200">
-              {cartCount === 0 ? (
-                <h1 className="py-6">You dont have any items</h1>
-              ) : (
-                Object.values(cartDetails ?? {}).map((cartDetail) => (
-                  <li key={cartDetail.id} className="flex py-6">
-                    <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
-                      <Image
-                        src={cartDetail.image as string}
-                        alt="Product image"
-                        width={100}
-                        height={100}
-                      />
-                    </div>
-
-                    <div className="ml-4 flex flex-1 flex-col">
-                      <div>
-                        <div className="flex justify-between text-base font-medium text-gray-900">
-                          <h3>{cartDetail.name}</h3>
-                          <p className="ml-4">${cartDetail.price}</p>
-                        </div>
-                        <p className="mt-1 line-clamp-2 text-sm text-gray-500">
-                          {cartDetail.description}
-                        </p>
-                      </div>
-
-                      <div className="flex flex-1 items-end justify-between text-sm">
-                        <p className="flex items-center text-gray-500">
-                          QTY:
-                          <button>
-                            <ChevronLeft
-                              className="hover:text-gray-600"
-                              onClick={() => decrementItem(cartDetail.id)}
-                            />
-                          </button>
-                          {cartDetail.quantity}
-                          <button>
-                            <ChevronRight
-                              className="hover:text-gray-600"
-                              onClick={() => incrementItem(cartDetail.id)}
-                            />
-                          </button>
-                        </p>
-
-                        <div className="flex">
-                          <button
-                            type="button"
-                            onClick={() => removeItem(cartDetail.id)}
-                            className="font-medium text-primary hover:text-primary/80"
-                          >
-                            Remove
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                ))
-              )}
-            </ul>
-          </div>
-          <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
-            <div className="flex justify-between text-base font-medium text-gray-900">
-              <p>Subtotal:</p>
-              <p>${totalPrice}</p>
-            </div>
-            <p className="mt-0.5 text-sm text-gray-500">
-              Shipping and taxes are calculated at checkout.
-            </p>
-
-            <div className="mt-6">
-              <Button className="w-full" onClick={handleCheckoutClick}>
-                Checkout
-              </Button>
-            </div>
-
-            <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
-              <p>
-                OR{" "}
-                <button
-                  onClick={handleCartClick}
-                  className="font-medium text-primary hover:text-primary/80"
-                >
-                  Continue Shopping
-                </button>
+          {cartCount === 0 ? (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ type: "spring", damping: 10 }}
+              className="flex h-full flex-col items-center justify-center gap-4"
+            >
+              <motion.div
+                animate={{
+                  rotate: [0, 5, -5, 0],
+                  y: [0, -5, 0],
+                }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                }}
+              >
+                <Ghost className="h-20 w-20 text-muted-foreground/80" />
+              </motion.div>
+              <p className="text-lg font-medium text-muted-foreground">
+                Nothing in your cart yet{" "}
               </p>
-            </div>
-          </div>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Link href="/all">
+                  <Button onClick={() => handleCartClick()}>
+                    Start Exploring
+                  </Button>
+                </Link>
+              </motion.div>
+            </motion.div>
+          ) : (
+            <>
+              <div className="mt-8 flex-1 overflow-y-auto">
+                <ul className="divide-y divide-border">
+                  <AnimatePresence>
+                    {Object.values(cartDetails ?? {}).map((cartDetail) => (
+                      <motion.li
+                        key={cartDetail.id}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: 20 }}
+                        className="py-6"
+                      >
+                        <div className="flex items-center gap-4">
+                          <div className="relative h-24 w-24 flex-shrink-0 overflow-hidden rounded-lg border border-border">
+                            <Image
+                              src={cartDetail.image as string}
+                              alt="Product image"
+                              fill
+                              className="object-cover"
+                            />
+                          </div>
+
+                          <div className="flex flex-1 flex-col gap-2">
+                            <div className="flex justify-between">
+                              <h3 className="font-medium">{cartDetail.name}</h3>
+                              <p className="font-medium">${cartDetail.price}</p>
+                            </div>
+
+                            <div className="flex items-center justify-between">
+                              <div className="flex items-center gap-2">
+                                <Button
+                                  variant="outline"
+                                  size="icon"
+                                  className="h-8 w-8"
+                                  onClick={() => decrementItem(cartDetail.id)}
+                                  disabled={cartDetail.quantity <= 1}
+                                >
+                                  <ChevronLeft className="h-4 w-4" />
+                                </Button>
+                                <span className="w-8 text-center">
+                                  {cartDetail.quantity}
+                                </span>
+                                <Button
+                                  variant="outline"
+                                  size="icon"
+                                  className="h-8 w-8"
+                                  onClick={() => incrementItem(cartDetail.id)}
+                                >
+                                  <ChevronRight className="h-4 w-4" />
+                                </Button>
+                              </div>
+
+                              <Button
+                                variant="ghost"
+                                size="sm"
+                                onClick={() => {
+                                  removeItem(cartDetail.id);
+                                  toast.success(
+                                    `${cartDetail.name} removed from cart`,
+                                  );
+                                }}
+                              >
+                                <X className="h-4 w-4" />
+                              </Button>
+                            </div>
+                          </div>
+                        </div>
+                      </motion.li>
+                    ))}
+                  </AnimatePresence>
+                </ul>
+              </div>
+
+              <div className="border-t border-border px-4 py-6 sm:px-6">
+                <div className="flex justify-between text-lg font-bold">
+                  <p>Subtotal:</p>
+                  <p>${totalPrice?.toFixed(2)}</p>
+                </div>
+                <p className="mt-2 text-sm text-muted-foreground">
+                  Shipping and taxes calculated at checkout.
+                </p>
+
+                <div className="mt-6">
+                  <Button
+                    disabled={loading}
+                    className={`w-full ${loading ? "cursor-not-allowed opacity-50" : ""}`}
+                    size="lg"
+                    onClick={handleCheckoutClick}
+                  >
+                    {loading ? "Processing..." : "Checkout"}
+                  </Button>
+                </div>
+
+                <div className="mt-4 flex justify-center text-center text-sm">
+                  <Button
+                    variant="link"
+                    onClick={() => handleCartClick()}
+                    className="text-muted-foreground"
+                  >
+                    Continue Shopping
+                  </Button>
+                </div>
+              </div>
+            </>
+          )}
         </div>
       </SheetContent>
     </Sheet>

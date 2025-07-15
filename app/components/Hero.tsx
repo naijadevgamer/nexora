@@ -1,10 +1,15 @@
-import Image from "next/image";
-import Link from "next/link";
+// components/Hero.tsx
 import { client, urlFor } from "../lib/sanity";
+import Link from "next/link";
+import Image from "next/image";
+
+import { Button } from "@/components/ui/button";
+import { MotionDiv } from "./motion-div";
+import ParticleBackground from "./ParticleBackground";
+// import { ParticleBackground } from "./ParticleBackground";
 
 const getData = async () => {
   const query = '*[_type == "heroImage"][0]';
-
   const data = await client.fetch(query);
   return data;
 };
@@ -13,64 +18,75 @@ export const dynamic = "force-dynamic";
 
 export default async function Hero() {
   const data = await getData();
+
   return (
-    <section className="mx-auto max-w-2xl px-4 pb-6 sm:max-w-4xl sm:px-6 lg:max-w-7xl">
-      <div className="mb-8 flex flex-wrap justify-between md:mb-16">
-        <div className="mb-6 flex w-full flex-col justify-center sm:mb-12 lg:mb-0 lg:w-1/3 lg:pb-24 lg:pt-48">
-          <h1 className="mb-4 text-4xl font-bold text-black sm:text-5xl md:mb-8 md:text-6xl">
-            Top Fashion for a top price!
-          </h1>
-          <p className="max-w-md leading-relaxed text-gray-500 xl:text-lg">
-            We sell only the most exclusive and high quality products for you.
-            We are the best so come and shop with us.
-          </p>
-        </div>
+    <section className="relative overflow-hidden">
+      <ParticleBackground />
 
-        <div className="mb-12 flex w-full md:mb-16 lg:w-2/3">
-          <div className="relative left-12 top-12 z-10 -ml-12 overflow-hidden rounded-lg bg-gray-100 shadow-lg md:left-16 md:top-16 lg:ml-0">
-            <Image
-              src={urlFor(data.image_1).url()}
-              alt="Great Photo"
-              className="h-full w-full object-cover object-center"
-              width={1280}
-              height={1920}
-              priority
-            />
+      <div className="container relative z-10 py-24 sm:py-32">
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-center">
+          <div className="space-y-6">
+            <MotionDiv
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              <h1 className="bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-4xl font-bold tracking-tight text-transparent sm:text-6xl">
+                Elevate Your Style with Futuristic Fashion
+              </h1>
+            </MotionDiv>
+
+            <MotionDiv
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              <p className="text-lg leading-8 text-muted-foreground">
+                Discover cutting-edge designs that blend technology and fashion
+                for the modern era.
+              </p>
+            </MotionDiv>
+
+            <MotionDiv
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="flex flex-wrap gap-4"
+            >
+              <Button asChild size="lg" className="rounded-full">
+                <Link href="/category/Men">Shop Men</Link>
+              </Button>
+              <Button
+                asChild
+                size="lg"
+                variant="outline"
+                className="rounded-full"
+              >
+                <Link href="/category/Women">Shop Women</Link>
+              </Button>
+            </MotionDiv>
           </div>
 
-          <div className="overflow-hidden rounded-lg bg-gray-100 shadow-lg">
-            <Image
-              src={urlFor(data.image_2).url()}
-              alt="Great Photo"
-              className="h-full w-full object-cover object-center"
-              width={1280}
-              height={1920}
-              priority
-            />
-          </div>
-        </div>
-      </div>
+          <MotionDiv
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8 }}
+            className="relative"
+          >
+            <div className="relative aspect-square overflow-hidden rounded-2xl border border-border/50 bg-background/50 backdrop-blur-md">
+              <Image
+                src={urlFor(data.image_1).url()}
+                alt="Futuristic fashion"
+                fill
+                className="object-cover"
+                priority
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
+            </div>
 
-      <div className="flex flex-col items-center justify-between gap-8 lg:flex-row">
-        <div className="flex h-12 w-64 divide-x overflow-hidden rounded-lg border">
-          <Link
-            href="/Men"
-            className="flex w-1/3 items-center justify-center text-gray-500 transition duration-100 hover:bg-gray-100 active:bg-gray-200"
-          >
-            Men
-          </Link>
-          <Link
-            href="/Women"
-            className="flex w-1/3 items-center justify-center text-gray-500 transition duration-100 hover:bg-gray-100 active:bg-gray-200"
-          >
-            Women
-          </Link>
-          <Link
-            href="/Teens"
-            className="flex w-1/3 items-center justify-center text-gray-500 transition duration-100 hover:bg-gray-100 active:bg-gray-200"
-          >
-            Teens
-          </Link>
+            <div className="absolute -bottom-8 -right-8 z-[-1] h-64 w-64 rounded-full bg-purple-500/20 blur-3xl" />
+            <div className="absolute -left-8 -top-8 z-[-1] h-64 w-64 rounded-full bg-pink-500/20 blur-3xl" />
+          </MotionDiv>
         </div>
       </div>
     </section>

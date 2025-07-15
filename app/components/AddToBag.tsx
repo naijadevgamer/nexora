@@ -1,9 +1,12 @@
+// components/AddToBag.tsx
 "use client";
 
 import { Button } from "@/components/ui/button";
 import { ProductCart } from "../interface";
 import { urlFor } from "../lib/sanity";
 import { useShoppingCart } from "use-shopping-cart";
+import { toast } from "sonner";
+import { motion } from "framer-motion";
 
 const AddToBag = ({
   currency,
@@ -23,14 +26,22 @@ const AddToBag = ({
     image: urlFor(image).url(),
     price_id,
   };
+
   return (
-    <Button 
-      onClick={() => {
-        addItem(product), handleCartClick();
-      }}
-    >
-      Add to cart
-    </Button>
+    <motion.div whileTap={{ scale: 0.95 }}>
+      <Button
+        onClick={() => {
+          addItem(product);
+          handleCartClick();
+          toast.success(`${name} added to cart`, {
+            position: "top-center",
+          });
+        }}
+        className="w-full"
+      >
+        Add to Cart
+      </Button>
+    </motion.div>
   );
 };
 

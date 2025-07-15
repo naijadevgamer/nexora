@@ -1,9 +1,13 @@
+// components/CheckoutNow.tsx
 "use client";
 
 import { Button } from "@/components/ui/button";
 import { ProductCart } from "../interface";
 import { urlFor } from "../lib/sanity";
 import { useShoppingCart } from "use-shopping-cart";
+import { motion } from "framer-motion";
+import { toast } from "sonner";
+import { useState } from "react";
 
 const CheckoutNow = ({
   currency,
@@ -15,8 +19,22 @@ const CheckoutNow = ({
 }: ProductCart) => {
   const { checkoutSingleItem } = useShoppingCart();
 
-  const buyNow = (priceId: string) => {
-    checkoutSingleItem(priceId);
+  const [loading, setLoading] = useState(false);
+
+  const buyNow = async (priceId: string) => {
+    setLoading(true);
+
+    const toastId = toast.loading("Redirecting to checkout...");
+
+    try {
+      await checkoutSingleItem(priceId);
+      toast.success("Checkout started!", { id: toastId });
+    } catch (error) {
+      console.error(error);
+      toast.error("Failed to start checkout.", { id: toastId });
+    } finally {
+      setLoading(false);
+    }
   };
 
   const product = {
@@ -29,9 +47,17 @@ const CheckoutNow = ({
   };
 
   return (
-    <Button variant={"outline"} onClick={() => buyNow(product.price_id)}>
-      Checkout now
-    </Button>
+    <motion.div whileTap={{ scale: 0.95 }}>
+      <Button
+        variant="outline"
+        onClick={() => buyNow(product.price_id)}
+        // className="w-full"
+        disabled={loading}
+        className={loading ? "w-full cursor-not-allowed opacity-50" : "w-full"}
+      >
+        {loading ? "Loading..." : "Express Checkout"}
+      </Button>
+    </motion.div>
   );
 };
 
