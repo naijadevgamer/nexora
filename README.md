@@ -56,8 +56,6 @@ git clone https://github.com/yourusername/nexora.git
 cd nexora
 ```
 
-````
-
 2. **Install dependencies**
 
 ```bash
@@ -233,4 +231,3 @@ If you find this project useful, please consider:
 <div align="center">
   <sub>Built with ❤️ and Next.js</sub>
 </div>
-````
