@@ -8,6 +8,7 @@ const getData = async () => {
   const query = `*[_type == "product"] | order(_createdAt desc) {
     _id, 
     price,
+    price_id,
     name,
     "slug": slug.current,
     "categoryName": category->name,

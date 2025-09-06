@@ -20,7 +20,7 @@ const ProductCard = ({ product }: { product: simplifiedProduct }) => {
       price: product.price,
       currency: "USD",
       image: product.imageUrl,
-      price_id: product._id,
+      price_id: product.price_id,
     });
     handleCartClick();
     toast.success(`${product.name} added to cart`);

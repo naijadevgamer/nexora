@@ -7,6 +7,7 @@ const getData = async (category: string) => {
   const query = `*[_type == "product" && category->name == "${category}"]{
     _id, 
     price,
+    price_id,
     name,
     "slug": slug.current,
     "categoryName": category->name,
@@ -20,6 +21,7 @@ export const dynamic = "force-dynamic";
 
 const Category = async ({ params }: { params: { category: string } }) => {
   const data: simplifiedProduct[] = await getData(params.category);
+  console.log(data);
 
   return (
     <section className="relative py-8 sm:py-16">
