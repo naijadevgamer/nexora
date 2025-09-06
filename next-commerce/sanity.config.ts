@@ -5,7 +5,7 @@ import {schemaTypes} from './schemaTypes'
 
 export default defineConfig({
   name: 'default',
-  title: 'next-commerce',
+  title: 'nexora-vert',
 
   projectId: '274myesj',
   dataset: 'production',
