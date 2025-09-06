@@ -50,7 +50,6 @@ const CheckoutNow = ({
       <Button
         variant="outline"
         onClick={() => buyNow(product.price_id)}
-        // className="w-full"
         disabled={loading}
         className={loading ? "w-full cursor-not-allowed opacity-50" : "w-full"}
       >
