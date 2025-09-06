@@ -42,7 +42,10 @@ const ShoppingCartModal = () => {
       const result = await redirectToCheckout();
 
       if (result?.error) {
-        toast.error("Checkout failed", { id: toastId });
+        console.error("Stripe checkout error:", result.error);
+        toast.error("Checkout failed: " + result.error.message, {
+          id: toastId,
+        });
       } else {
         toast.success("Checkout started", { id: toastId });
       }
