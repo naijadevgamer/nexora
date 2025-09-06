@@ -1,34 +1,39 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: [
-      "cdn.sanity.io",
-      "images.unsplash.com",
-      "assets.mixkit.co",
-      "upload.wikimedia.org",
-      "theoceancleanup.com",
-      "media.istockphoto.com",
-      "www.1t.org",
-      "carbon180.org",
-    ],
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: '**.unsplash.com',
+        protocol: "https",
+        hostname: "cdn.sanity.io",
       },
       {
-        protocol: 'https',
-        hostname: '**.wikimedia.org',
+        protocol: "https",
+        hostname: "images.unsplash.com",
       },
       {
-        protocol: 'https',
-        hostname: '**.mixkit.co',
+        protocol: "https",
+        hostname: "assets.mixkit.co",
       },
       {
-        protocol: 'https',
-        hostname: 'media.istockphoto.com',
+        protocol: "https",
+        hostname: "upload.wikimedia.org",
       },
-      // Add other domains as needed
+      {
+        protocol: "https",
+        hostname: "theoceancleanup.com",
+      },
+      {
+        protocol: "https",
+        hostname: "media.istockphoto.com",
+      },
+      {
+        protocol: "https",
+        hostname: "www.1t.org",
+      },
+      {
+        protocol: "https",
+        hostname: "carbon180.org",
+      },
     ],
   },
 };
