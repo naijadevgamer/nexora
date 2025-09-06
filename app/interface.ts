@@ -5,6 +5,7 @@ export interface simplifiedProduct {
   slug: string;
   categoryName: string;
   name: string;
+  price_id: string;
 }
 
 export interface fullProduct {
