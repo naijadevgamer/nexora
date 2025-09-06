@@ -3,15 +3,19 @@
 import { ReactNode } from "react";
 import { CartProvider as CProvide } from "use-shopping-cart";
 
-const isDev = process.env.NODE_ENV === "development";
+const getBaseUrl = () => {
+  if (typeof window !== "undefined") {
+    return window.location.origin;
+  }
+  // Fallback for server-side rendering
+  return process.env.NODE_ENV === "development"
+    ? "http://localhost:3000"
+    : "https://nexora-vert.vercel.app";
+};
 
-const successUrl = isDev
-  ? "http://localhost:3000/stripe/success"
-  : "https://https://nexora-vert.vercel.app/stripe/success";
-
-const cancelUrl = isDev
-  ? "http://localhost:3000/stripe/error"
-  : "https://https://nexora-vert.vercel.app/stripe/error";
+const baseUrl = getBaseUrl();
+const successUrl = `${baseUrl}/stripe/success`;
+const cancelUrl = `${baseUrl}/stripe/error`;
 
 const CartProvider = ({ children }: { children: ReactNode }) => {
   return (
