@@ -1,8 +1,7 @@
-// components/ui/tilt.tsx
 "use client";
 
-import React, { useState, useRef, useEffect } from "react";
-import { motion, useMotionValue, useSpring, transform } from "framer-motion";
+import { motion, transform, useMotionValue, useSpring } from "framer-motion";
+import React, { useRef, useState } from "react";
 
 interface TiltProps {
   children: React.ReactNode;
