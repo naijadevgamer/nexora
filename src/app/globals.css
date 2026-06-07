@@ -1,0 +1,142 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Deep Aubergine & Warm Parchment */
+    --background: 40 30% 96%;
+    --foreground: 280 15% 8%;
+    --card: 40 30% 96%;
+    --card-foreground: 280 15% 8%;
+    --popover: 40 30% 96%;
+    --popover-foreground: 280 15% 8%;
+
+    /* Rich aubergine - editorial, warm, never generic */
+    --primary: 290 45% 25%;
+    --primary-foreground: 40 30% 96%;
+
+    --secondary: 40 20% 90%;
+    --secondary-foreground: 280 15% 12%;
+    --muted: 40 20% 90%;
+    --muted-foreground: 280 8% 42%;
+    --accent: 40 20% 90%;
+    --accent-foreground: 280 15% 12%;
+    --destructive: 0 55% 42%;
+    --destructive-foreground: 40 30% 96%;
+
+    /* Structural elements */
+    --border: 280 10% 84%;
+    --input: 280 10% 84%;
+    --ring: 290 45% 25%;
+
+    --radius: 0.25rem;
+  }
+
+  .dark {
+    --background: 280 15% 4%;
+    --foreground: 40 25% 94%;
+    --card: 280 15% 5%;
+    --card-foreground: 40 25% 94%;
+    --popover: 280 15% 5%;
+    --popover-foreground: 40 25% 94%;
+
+    /* Brighter aubergine for dark mode contrast */
+    --primary: 290 40% 48%;
+    --primary-foreground: 40 30% 96%;
+
+    --secondary: 280 10% 11%;
+    --secondary-foreground: 40 25% 94%;
+    --muted: 280 10% 11%;
+    --muted-foreground: 280 8% 58%;
+    --accent: 280 10% 11%;
+    --accent-foreground: 40 25% 94%;
+
+    --border: 280 8% 16%;
+    --input: 280 8% 16%;
+    --ring: 290 40% 48%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "ss01", "ss02", "cv01", "cv02";
+  }
+
+  /* Custom scrollbar - sophisticated and minimal */
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--border));
+    border-radius: 2px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--muted-foreground) / 0.3);
+  }
+
+  /* Firefox scrollbar */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--border)) transparent;
+  }
+
+  /* Custom typography scale - larger, more editorial */
+  h1 {
+    @apply text-5xl font-light leading-[0.95] tracking-[-0.02em] md:text-7xl lg:text-8xl;
+  }
+
+  h2 {
+    @apply text-3xl font-light leading-[1.1] tracking-[-0.01em] md:text-4xl lg:text-5xl;
+  }
+
+  h3 {
+    @apply text-xl font-normal tracking-[-0.005em] md:text-2xl;
+  }
+}
+
+/* Outline text for hero (light/dark) */
+.outline-text {
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: currentColor;
+}
+.dark .outline-text {
+  -webkit-text-stroke-color: currentColor;
+}
+
+/* Cinematic utilities */
+@layer components {
+  .text-balance-editorial {
+    text-wrap: balance;
+    max-width: 40ch;
+  }
+
+  .grid-cinematic {
+    @apply grid grid-cols-12 gap-6 md:gap-8 lg:gap-10;
+  }
+
+  .spatial-section {
+    @apply py-24 md:py-32 lg:py-40;
+  }
+
+  .container-cinematic {
+    @apply mx-auto max-w-[1600px] px-6 md:px-12 lg:px-16;
+  }
+}
+
+.j {
+  color: #ebe7e0;
+}
