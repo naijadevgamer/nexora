@@ -4,9 +4,9 @@
       <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#1A1A1A" flood-opacity="0.08"/>
     </filter>
     <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#C2410C"/>
-      <stop offset="50%" stop-color="#D97706"/>
-      <stop offset="100%" stop-color="#B45309"/>
+      <stop offset="0%" stop-color="#4A154B" />
+      <stop offset="50%" stop-color="#5C1A5E" />
+      <stop offset="100%" stop-color="#3D0F3E" />
     </linearGradient>
   </defs>
 
