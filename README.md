@@ -1,7 +1,3 @@
-<!-- # 🌌 Nexora - Futuristic Fashion E-Commerce
-
-![Nexora Banner](https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80) -->
-
 # Nexora
 
 <div align="center">
@@ -171,23 +167,11 @@ Sanity CMS → fetch() at build/request time → Server Components → Client Co
 
 ### 🏠 Homepage — Hero Section
 
-**What to capture:** Full viewport hero section with the parallax image, headline "The Art of Restraint," and the two CTA links
-
-**Why it matters:** This is the first impression — shows the cinematic approach, custom cursor effect, and editorial typography
-
-**UI state:** Default (light mode), scroll position at top, image loaded
-
 ![Home](./public/screenshots/hero.png)
 
 ---
 
 ### 🏠 Homepage — Product Narrative
-
-**What to capture:** One of the alternating product sections with the large image and side text (price, "Discover" link)
-
-**Why it matters:** Demonstrates the editorial layout vs generic card grids
-
-**UI state:** Mid-scroll, light mode, one product visible with hover state on the image
 
 ![Home](./public/screenshots/product-narrative.png)
 
@@ -195,23 +179,11 @@ Sanity CMS → fetch() at build/request time → Server Components → Client Co
 
 ### 🏠 Homepage — Curated Bento Grid
 
-**What to capture:** The asymmetric bento grid showing 4 products in varied sizes plus the quote block
-
-**Why it matters:** Shows the editorial curation approach — products at different scales create visual hierarchy
-
-**UI state:** Fully visible in viewport, light mode, no hover states needed
-
 ![Home](./public/screenshots/bento.png)
 
 ---
 
 ### 🌙 Homepage — Manifesto (Dark Section)
-
-**What to capture:** The dark immersive section with statistics on the left ("01", "12", "3") and manifesto text on the right
-
-**Why it matters:** Shows the tonal shift and how dark sections maintain intensity
-
-**UI state:** Dark section fully visible, numbers and text revealed
 
 ![Home](./public/screenshots/manifesto.png)
 
@@ -219,23 +191,11 @@ Sanity CMS → fetch() at build/request time → Server Components → Client Co
 
 ### 🛍️ Category Page
 
-**What to capture:** A category page (e.g., Men) showing the asymmetric product grid with the "Collection" header
-
-**Why it matters:** Demonstrates how categories feel like exhibitions, not product dumps
-
-**UI state:** Light mode, grid fully loaded, category name visible
-
 ![Home](./public/screenshots/category.png)
 
 ---
 
 ### 👕 Product Page
-
-**What to capture:** The product page with the large sticky image on the left and product details panel (price, description, Add to Cart, Express Checkout) on the right
-
-**Why it matters:** Shows the immersive product narrative layout — no standard gallery + details split
-
-**UI state:** Light mode, product loaded, price and buttons visible
 
 ![Home](./public/screenshots/product.png)
 
@@ -243,23 +203,11 @@ Sanity CMS → fetch() at build/request time → Server Components → Client Co
 
 ### 🔍 Search Modal
 
-**What to capture:** The search modal open with a query typed, showing search results (or the "no products found" state if testing with an empty database)
-
-**Why it matters:** Shows the debounced search UX with keyboard shortcut hint
-
-**UI state:** Modal open, light mode, query visible, results showing (or empty state)
-
 ![Home](./public/screenshots/search-modal.png)
 
 ---
 
 ### 🛒 Cart Panel
-
-**What to capture:** The slide-out cart panel with 2-3 items, showing quantities, prices, and the Checkout button
-
-**Why it matters:** Demonstrates the frictionless cart experience
-
-**UI state:** Cart panel slid in from right, items visible, light mode
 
 ![Home](./public/screenshots/cart.png)
 
@@ -267,23 +215,11 @@ Sanity CMS → fetch() at build/request time → Server Components → Client Co
 
 ### 🌓 Dark Mode
 
-**What to capture:** Any page (recommend the Manifesto section or Newsletter) in dark mode
-
-**Why it matters:** Proves the dual-theme system works and looks intentional
-
-**UI state:** Dark mode active, content visible
-
 ![Home](./public/screenshots/dark.png)
 
 ---
 
 ### 📱 Mobile Responsive
-
-**What to capture:** The same hero section or product narrative section on a mobile viewport (375px width)
-
-**Why it matters:** Shows the responsive design isn't just stacking — layouts adapt intentionally
-
-**UI state:** Mobile viewport, light mode, content loaded
 
 ![Home](./public/screenshots/responsive.png)
 
